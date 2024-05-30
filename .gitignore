@@ -40,3 +40,35 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+ Node dependencies
+
+# Production build output
+/build
+
+# Temporary files
+
+/temp
+
+# Coverage directory used by testing tools
+
+
+# IDEs and editors
+.vscode/
+*.sublime-projectworkspace
+
+# OS generated files
+*~
+
+# Environment variables
+src/environments/environment*.ts
+
+# Logs and debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Bower dependencies
+/bower_components
+
+# Angular CLI cache
+.angular/cache
