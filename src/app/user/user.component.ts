@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { DUMMY_USERS } from "../dummy-users";
 
 const randomIndex=Math.floor(Math.random()*DUMMY_USERS.length)
@@ -13,16 +13,21 @@ const randomIndex=Math.floor(Math.random()*DUMMY_USERS.length)
 export class UserComponent {
 
   // If access specifier private is specified then it can accessed only within the class not outside
-  selectedUser=DUMMY_USERS[randomIndex]
+  // selectedUser=DUMMY_USERS[randomIndex]
 
-  get imagePath(){
-    return "assets/users/"+this.selectedUser.avatar;
-  }
+  selectedUser=signal(DUMMY_USERS[randomIndex])
+
+  imagePath=computed(()=>
+    "assets/users/"+this.selectedUser().avatar);
+
+  // get imagePath(){
+  //   return "assets/users/"+this.selectedUser().avatar;
+  // }
 
   onSelectedUser(){
     console.log("Clicked!!");
     const randomIdx=Math.floor(Math.random()*DUMMY_USERS.length)
-    this.selectedUser=DUMMY_USERS[randomIdx];
+    this.selectedUser.set(DUMMY_USERS[randomIdx])
   }
 
 }
