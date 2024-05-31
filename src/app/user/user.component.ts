@@ -15,4 +15,14 @@ export class UserComponent {
   // If access specifier private is specified then it can accessed only within the class not outside
   selectedUser=DUMMY_USERS[randomIndex]
 
+  get imagePath(){
+    return "assets/users/"+this.selectedUser.avatar;
+  }
+
+  onSelectedUser(){
+    console.log("Clicked!!");
+    const randomIdx=Math.floor(Math.random()*DUMMY_USERS.length)
+    this.selectedUser=DUMMY_USERS[randomIdx];
+  }
+
 }
