@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed ,Input} from '@angular/core';
 import { DUMMY_USERS } from "../dummy-users";
 
 const randomIndex=Math.floor(Math.random()*DUMMY_USERS.length)
@@ -11,6 +11,9 @@ const randomIndex=Math.floor(Math.random()*DUMMY_USERS.length)
   styleUrl: './user.component.css'
 })
 export class UserComponent {
+
+  @Input() avatar!:string;
+  @Input() name!:string;
 
   // If access specifier private is specified then it can accessed only within the class not outside
   // selectedUser=DUMMY_USERS[randomIndex]
