@@ -1,7 +1,13 @@
-import { Component, signal, computed ,Input, input, Output, EventEmitter } from '@angular/core';
+import { Component, signal, computed ,Input, input, Output, EventEmitter ,output} from '@angular/core';
 import { DUMMY_USERS } from "../dummy-users";
 
 const randomIndex=Math.floor(Math.random()*DUMMY_USERS.length)
+
+type user={
+  id:string;
+  name:string;
+  avatar:string;
+}
 
 @Component({
   selector: 'app-user',
@@ -19,8 +25,11 @@ export class UserComponent {
 
   avatar=input.required<string>();
   name=input.required<string>();
-  id=input<string>();
-  @Output() select=new EventEmitter();
+  // id=input<string>();
+  // @Output() select=new EventEmitter();
+  @Input() id!:string;
+
+  @Output() select=new EventEmitter<user>();
 
   // If access specifier private is specified then it can accessed only within the class not outside
   // selectedUser=DUMMY_USERS[randomIndex]
@@ -38,11 +47,20 @@ export class UserComponent {
     return "assets/users/"+this.avatar();
   });
 
+
   onSelectedUser(){
     console.log("Clicked!!");
     // const randomIdx=Math.floor(Math.random()*DUMMY_USERS.length)
     // this.selectedUser.set(DUMMY_USERS[randomIdx])
-    this.select.emit(this.id);
+
+     const out:user= {
+      id:this.id,
+      name:this.name(),
+      avatar:this.avatar()
+    };
+
+    this.select.emit(out);
+    // this.select.emit(this.name());
   }
 
 
