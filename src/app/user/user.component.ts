@@ -1,13 +1,8 @@
 import { Component, signal, computed ,Input, input, Output, EventEmitter ,output} from '@angular/core';
 import { DUMMY_USERS } from "../dummy-users";
+import { type user} from "./user.model";
 
 const randomIndex=Math.floor(Math.random()*DUMMY_USERS.length)
-
-type user={
-  id:string;
-  name:string;
-  avatar:string;
-}
 
 @Component({
   selector: 'app-user',
@@ -30,6 +25,8 @@ export class UserComponent {
   @Input() id!:string;
 
   @Output() select=new EventEmitter<user>();
+
+  @Input({required:true}) selected!:boolean;
 
   // If access specifier private is specified then it can accessed only within the class not outside
   // selectedUser=DUMMY_USERS[randomIndex]
