@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter, Input} from '@angular/core';
+import {Component, Output, EventEmitter, Input, inject} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {TaskService} from "../task.service";
 
@@ -19,9 +19,7 @@ export class NewTaskComponent {
     enteredTitle="";
     enteredSummary:string="";
     enteredDate:string="";
-
-  constructor(private taskService:TaskService) {
-  }
+    private taskService=inject(TaskService);
 
 
   onCancelClick() {
