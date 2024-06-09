@@ -1,13 +1,8 @@
 import {Component, Output, EventEmitter, Input, inject} from '@angular/core';
-import {FormsModule} from "@angular/forms";
 import {TaskService} from "../task.service";
 
 @Component({
   selector: 'app-new-task',
-  standalone: true,
-  imports: [
-    FormsModule
-  ],
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css'
 })
@@ -25,7 +20,6 @@ export class NewTaskComponent {
   onCancelClick() {
     this.cancelClicked.emit(true);
   }
-
 
   onSubmit() {
     this.taskService.addTask({
